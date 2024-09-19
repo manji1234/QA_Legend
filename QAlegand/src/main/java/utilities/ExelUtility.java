@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import constants.Constants;
+
 public class ExelUtility 
 {
 	public static FileInputStream f;
@@ -20,7 +22,8 @@ public class ExelUtility
 	 {
 		 try
 		 {
-		 f=new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\QAlegand\\src\\test\\resources\\TestData.xlsx");
+		 String path=Constants.HOMEDIRECTORY+Constants.TESTDATAEXELPATH;
+		 f=new FileInputStream(path);
 		 w=new XSSFWorkbook(f);
 		 s=w.getSheet(sheet);
 		 XSSFRow r=s.getRow(row);
@@ -36,7 +39,8 @@ public class ExelUtility
 	 {
 		 try
 		 {
-		 f=new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\QAlegand\\src\\test\\resources\\TestData.xlsx");
+		 String path=Constants.HOMEDIRECTORY+Constants.TESTDATAEXELPATH;
+		 f=new FileInputStream(path);
 		 w=new XSSFWorkbook(f);
 		 s=w.getSheet(sheet);
 		 XSSFRow r=s.getRow(row);
@@ -49,4 +53,5 @@ public class ExelUtility
 			  throw new RuntimeException("Exelsheet not found");
 		 }
 	 }
+	 
 }

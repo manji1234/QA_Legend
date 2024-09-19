@@ -12,33 +12,46 @@ public class LoginPage
 	public LoginPage(WebDriver driver)
 	{
 		this.driver=driver;
-		PageFactory.initElements(driver, this);     //to initialize webdriver, page factorty in selenium package
+		PageFactory.initElements(driver, this);    
 	}
 	@FindBy(id="username")
-	WebElement usernamefield;
+	WebElement username_field;
 	@FindBy(id="password")
-	WebElement passwordfield;
-	@FindBy(xpath="//button[@type='submit']")
-	WebElement submitfield;
-	@FindBy(xpath="//a[@class='btn btn-link']")
-	WebElement forgottfield;
-	
-	
-	
-	public void enterUserName()
+	WebElement password_field;
+	@FindBy(xpath="//button[@class='btn btn-primary']")
+	WebElement login_button;
+    @FindBy(xpath="//a[@class='btn btn-link']")
+	WebElement forgot_password_button;
+    @FindBy(xpath="//span[@class='help-block']")
+	WebElement result_message_fld;
+
+	public void enter_Username(String username)
 	{
-		usernamefield.sendKeys("username");
+		username_field.sendKeys(username);
+		
 	}
-	public void enterPassword()
+	public void enter_Password(String password)
 	{
-		passwordfield.sendKeys("password");
+		password_field.sendKeys(password);
 	}
-	public void submit()
+	public HomePage click_onLogin_Button()  //should return
 	{
-		submitfield.submit();
+		login_button.click();
+		           //constructor
+		return new HomePage(driver);
 	}
-	public void forgott()
+	public void login_button_click()
 	{
-		forgottfield.click();
+		login_button.click();
+	}
+	public String get_DisplayMessage()
+	{
+		String textmessage=result_message_fld.getText();
+		return textmessage;
+	}
+	public RestPage Click_Onforgot_password()
+	{
+		forgot_password_button.click();
+		return new RestPage(driver);
 	}
 }
